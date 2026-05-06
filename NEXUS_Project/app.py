@@ -168,7 +168,7 @@ def run_nexus(query: str):
         pyautogui.typewrite("cd\\Windows\\System32")
         pyautogui.hotkey("enter")
 
-    elif "poem" in query:
+    elif "poem" in query or "poetry" in query:
         webbrowser.open("https://thesonofthedragon.tumblr.com/image/118684971049")
         response = (
             "Death must be so beautiful. "
@@ -186,7 +186,8 @@ def run_nexus(query: str):
     elif "are you" in query or "r u" in query:
         response = "Yes master, I am fine and what about you?"
         speak(response)
-    elif "type" in query.lower():
+    elif "type" in query:
+        query=query.replace(".","")
         if "dance" in query:
             pyautogui.typewrite("rick")
             sleep(1)
@@ -201,20 +202,19 @@ def run_nexus(query: str):
             pyautogui.typewrite("telnet towel.blinkenlights.nl")
             sleep(1)
             pyautogui.hotkey("enter")
-        elif "sky" in query.lower():
+        elif "sky" in query:
             pyautogui.typewrite(f'curl ascii.live/')
-        elif "show" in query.lower():
-            query = query.replace("type", '')
+        elif "show" in query:
+            query = query.replace("type","")
             pyautogui.typewrite(f"netsh wlan{query}")
             sleep(1)
             pyautogui.hotkey("enter")
-        elif "system info" in query.lower():
+        elif "system info" in query:
             pyautogui.typewrite("systeminfo")
             sleep(2)
             pyautogui.hotkey("enter")
         else:
-            query = query.replace("type", "")
-            query=query.replace(".","")
+            query = query.replace("type","")
             pyautogui.typewrite(f"{query.lower()}")
             pyautogui.hotkey("enter")
     elif "planetspark" in query.lower():
