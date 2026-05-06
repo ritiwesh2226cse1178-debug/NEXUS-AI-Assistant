@@ -1,0 +1,7 @@
+Flask
+pyautogui
+pyttsx3
+PyPDF2
+face_recognition
+webbrowser
+datetime

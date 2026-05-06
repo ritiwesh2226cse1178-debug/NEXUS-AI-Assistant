@@ -1,0 +1,52 @@
+1. Y. LeCun, Y. Bengio, and G. Hinton, 
+"Deep learning," Nature, vol. 521, no. 7553, 
+pp. 436– 
+444, 
+May 2015. 
+2. S. Russell and P. Norvig, Artificial Intelligence: 
+A Modern Approach, 4th ed. Hoboken, NJ, 
+USA: 
+Pearson, 2020. 
+3. A. Esteva, B. Kuprel, et al., "Dermatologist-level 
+classification of skin cancer with deep neural 
+networks,"Nature, vol. 542, no. 7639, pp. 
+115–118, Feb. 2017. 
+4. D. Silver, A. Huang, et al., "Mastering the game 
+of Go with deep neural networks and tree search," 
+Nature, vol. 529, no. 7587, pp. 484–489, Jan. 2016. 
+5. E. M. Bender, T. Gebru, et al., "On the dangers of 
+stochastic parrots: Can language models be too 
+big?," in Proc. 2021 ACM Conf. Fairness, 
+Accountability, and Transparency (FAccT), pp. 610– 
+623, 2021. 
+6. R. Supe, S. Deshmukh, and A. Jadhav, "ARIA: 
+An AI-powered desktop virtual assistant," 
+International Journal of Computer Applications, vol. 
+182, no. 35, pp.28–33, 2019. 
+7.  
+V. Kumar and N. Aggarwal, "Design and 
+development of an intelligent virtual assistant for 
+desktop automation," International Journal of 
+Engineering Research & Technology (IJERT), vol. 
+9, no. 7, pp. 186–192, 2020. 
+8. P. Viola and M. Jones, "Rapid object detection using a 
+boosted cascade of simple features," in Proc. IEEE 
+Conf. Computer Vision and Pattern Recognition 
+(CVPR), vol. 1, 
+pp. I–511–I–518, 2001. 
+9. M. McTear, Z. Callejas, and D. Griol, The 
+Conversational Interface: Talking to Smart Devices, 
+Springer, 2016. 
+10. A. K. Das and D. Bandyopadhyay, "Developing 
+desktop-based personal assistants using Python: 
+Challenges and opportunities," International 
+Journal of Artificial Intelligence & Applications 
+(IJAIA), vol. 12, no. 4, pp. 45–57, Jul. 2021. 
+11.  
+Google Developers,"Speech-to-Text API 
+Documentation,"[Online]. Available: https:// 
+cloud.google.com/speech-to-text/docs. [Accessed: 
+Aug. 10, 2025]. 
+12. OpenCV.org, "OpenCV: Open Source Computer 
+VisionLibrary,"[Online].Available: https:// 
+opencv.org/. [Accessed: Aug. 10, 2025].

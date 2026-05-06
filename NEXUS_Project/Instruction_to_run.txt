@@ -1,0 +1,42 @@
+NEXUS: A Multifunctional AI Assistant
+
+Project Type:
+AI-based Desktop/Web Automation Assistant
+
+Requirements:
+1. Python 3.x installed
+2. Internet connection
+3. Microphone enabled
+4. Webcam required for face recognition module
+
+Required Libraries:
+pip install -r requirements.txt
+
+How to Run:
+1. Open Command Prompt
+2. Navigate to project directory
+3. Run command:
+   python app.py
+
+4. Open browser and visit:
+   http://127.0.0.1:5000/
+
+Functionalities:
+- Voice interaction
+- Browser automation
+- WhatsApp Web launch
+- Instagram launch
+- AI assistance
+- PDF audiobook reader
+- System command execution
+
+Input Format:
+Voice/Text commands
+
+Output:
+Speech response and automated actions
+
+Additional Notes:
+- Keep internet enabled
+- Some features require browser access
+- Ensure microphone permissions are granted

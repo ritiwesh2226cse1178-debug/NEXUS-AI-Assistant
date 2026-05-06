@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Running</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='launchstyle.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="launch-hero">
+        <div class="launch-container">
+            <!-- Greeting -->
+            <h1 class="launch-title" id="greeting">{{ message }}</h1>
+            <p class="launch-description">Your intelligent AI assistant is ready to listen. Speak your command or question below.</p>
+
+            <!-- Voice Command Button -->
+            <button class="launch-btn" id="startListening">
+                <i class="fas fa-microphone"></i> Start Listening
+            </button>
+
+            <!-- Typing/Listening Indicator -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Recognized Text -->
+            <div class="recognized-text" id="recognizedText"></div>
+
+            <!-- AI Response -->
+            <div class="response-text" id="response"></div>
+
+            <!-- Go Back Button -->
+            <a href="{{ url_for('home') }}">
+                <button class="launch-btn" style="margin-top:20px; background:#2563eb;">
+                    <i class="fas fa-arrow-left"></i> Go Back
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+    let recognition;  // global recognition object
+
+    // --- Browser-side TTS ---
+    function speakText(text) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+
+        // Stop recognition while speaking
+        if (recognition) recognition.stop();
+
+        utterance.onend = function() {
+            // Restart recognition after speaking, with a short delay
+            setTimeout(() => {
+                if (recognition) recognition.start();
+            }, 1000);
+        };
+
+        synth.speak(utterance);
+    }
+
+    // Speak greeting on page load
+    window.onload = function() {
+        speakText("{{ message }}");
+    };
+
+    // --- Voice Recognition ---
+    const startBtn = document.getElementById("startListening");
+    const recognizedDiv = document.getElementById("recognizedText");
+    const responseDiv = document.getElementById("response");
+    const typingIndicator = document.getElementById("typingIndicator");
+
+    function initRecognition() {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        recognition.continuous = true;
+
+        recognition.onstart = function() {
+            typingIndicator.style.display = 'flex';
+        };
+
+        recognition.onresult = async function(event) {
+            const transcript = event.results[event.results.length - 1][0].transcript;
+            recognizedDiv.innerHTML = "You said: " + transcript;
+
+            // Send command to Flask backend
+            const res = await fetch("/process_command", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ command: transcript })
+            });
+
+            const data = await res.json();
+            responseDiv.innerHTML = data.response;
+            speakText(data.response); // Speak the response
+        };
+
+        recognition.onerror = function(event) {
+            recognizedDiv.innerHTML = "Error: " + event.error;
+            typingIndicator.style.display = 'none';
+        };
+
+        recognition.onend = function() {
+            // Don't restart immediately here — handled in speakText()
+        };
+    }
+
+    startBtn.onclick = function() {
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+            alert("Your browser does not support speech recognition.");
+            typingIndicator.style.display = 'none'; 
+            return;
+        }
+
+        if (!recognition) {
+            initRecognition();
+        }
+        recognition.start();
+    };
+    </script>
+</body>
+</html>
